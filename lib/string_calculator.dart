@@ -3,6 +3,11 @@ class StringCalculator {
   /// Adds numbers in the given string and returns the sum.
   int add(String numbers) {
     if (numbers.isEmpty) return 0;
-    return int.parse(numbers);
+    var parts = numbers.split(',');
+    var sum = 0;
+    for (var p in parts) {
+      sum += int.parse(p);
+    }
+    return sum;
   }
 }
