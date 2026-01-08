@@ -3,23 +3,29 @@ class StringCalculator {
   /// Adds numbers in the given string and returns the sum.
   int add(String numbers) {
     if (numbers.isEmpty) return 0;
-    var delimiter = ',';
+    var delimiters = [','];
     var numString = numbers;
 
     if (numbers.startsWith('//')) {
       var newlineIndex = numbers.indexOf('\n');
-      delimiter = numbers.substring(2, newlineIndex);
       var delimiterPart = numbers.substring(2, newlineIndex);
       numString = numbers.substring(newlineIndex + 1);
 
-      if (delimiterPart.startsWith('[') && delimiterPart.endsWith(']')) {
-        delimiter = delimiterPart.substring(1, delimiterPart.length - 1);
+      if (delimiterPart.startsWith('[')) {
+        var regex = RegExp(r'\[([^\]]+)\]');
+        delimiters = regex
+            .allMatches(delimiterPart)
+            .map((m) => m.group(1)!)
+            .toList();
       } else {
-        delimiter = delimiterPart;
+        delimiters = [delimiterPart];
       }
     }
-    var normalized = numString.replaceAll('\n', delimiter);
-    var parts = normalized.split(delimiter);
+    var normalized = numString.replaceAll('\n', delimiters.first);
+    for (var d in delimiters.skip(1)) {
+      normalized = normalized.replaceAll(d, delimiters.first);
+    }
+    var parts = normalized.split(delimiters.first);
     return parts.map((p) => int.parse(p)).fold(0, (a, b) => a + b);
   }
 }
