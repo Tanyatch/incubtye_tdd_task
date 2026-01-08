@@ -1,5 +1,8 @@
+/// A calculator that adds numbers from a string input.
 class StringCalculator {
-   int add(String numbers) {
+  /// Adds numbers in the given string and returns the sum.
+  int add(String numbers) {
+    if (numbers.isEmpty) return 0;
     return 0;
   }
 }
