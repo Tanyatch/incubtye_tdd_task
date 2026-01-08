@@ -17,4 +17,7 @@ void main() {
   test('should handle any amount of numbers', () {
     expect(calculator.add('1,2,3,4'), 10);
   });
+  test('should handle new lines between numbers', () {
+    expect(calculator.add('1\n2,3'), 6);
+  });
 }
