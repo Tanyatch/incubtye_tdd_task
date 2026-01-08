@@ -1,2 +1,5 @@
-/// A Calculator.
-class StringCalculator {}
+class StringCalculator {
+   int add(String numbers) {
+    return 0;
+  }
+}
