@@ -47,6 +47,14 @@ This project implements a String Calculator that adds numbers from a string inpu
 | 11 | Input Validation | Handles empty parts gracefully | `add("1,,3")` → `4` |
 ---
 
+## Screenshots
+
+### Test Execution
+<img width="1443" height="737" alt="image" src="https://github.com/user-attachments/assets/5c6f7671-22ed-4edc-9d39-d77baf8e3185" />
+
+---
+
+
 ## Usage Examples
 
 ```dart
