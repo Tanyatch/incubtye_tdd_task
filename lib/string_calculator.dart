@@ -25,7 +25,10 @@ class StringCalculator {
     for (var d in delimiters.skip(1)) {
       normalized = normalized.replaceAll(d, delimiters.first);
     }
-    var parts = normalized.split(delimiters.first);
+    var parts = normalized
+        .split(delimiters.first)
+        .where((p) => p.isNotEmpty)
+        .toList();
     var nums = parts.map((p) => int.parse(p)).toList();
 
     var negatives = nums.where((n) => n < 0).toList();
