@@ -20,8 +20,12 @@ void main() {
   test('should handle new lines between numbers', () {
     expect(calculator.add('1\n2,3'), 6);
   });
-    test('supports custom single-char delimiter', () {
+  test('supports custom single-char delimiter', () {
     var calc = StringCalculator();
     expect(calc.add('//;\n1;2'), 3);
+  });
+  test('supports multi-character delimiter', () {
+    var calc = StringCalculator();
+    expect(calc.add('//[***]\n1***2***3'), 6);
   });
 }
