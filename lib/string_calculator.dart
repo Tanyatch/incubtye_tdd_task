@@ -9,9 +9,15 @@ class StringCalculator {
     if (numbers.startsWith('//')) {
       var newlineIndex = numbers.indexOf('\n');
       delimiter = numbers.substring(2, newlineIndex);
+      var delimiterPart = numbers.substring(2, newlineIndex);
       numString = numbers.substring(newlineIndex + 1);
-    }
 
+      if (delimiterPart.startsWith('[') && delimiterPart.endsWith(']')) {
+        delimiter = delimiterPart.substring(1, delimiterPart.length - 1);
+      } else {
+        delimiter = delimiterPart;
+      }
+    }
     var normalized = numString.replaceAll('\n', delimiter);
     var parts = normalized.split(delimiter);
     return parts.map((p) => int.parse(p)).fold(0, (a, b) => a + b);
