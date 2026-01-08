@@ -52,4 +52,12 @@ void main() {
   test('ignores numbers greater than 1000', () {
     expect(calculator.add('2,1001'), 2);
   });
+  test('throws exception for invalid input', () {
+    expect(() => calculator.add('1,a,3'), throwsA(isA<FormatException>()));
+  });
+
+  test('ignores empty parts between delimiters', () {
+    expect(calculator.add('1,,3'), 4);
+    expect(calculator.add(',1,2,'), 3);
+  });
 }
