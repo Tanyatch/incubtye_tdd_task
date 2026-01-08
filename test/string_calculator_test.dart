@@ -36,4 +36,17 @@ void main() {
   test('throws exception for negative numbers', () {
     expect(() => calculator.add('-1,2'), throwsA(isA<Exception>()));
   });
+  test('shows all negative numbers in exception message', () {
+    expect(
+      () => calculator.add('-1,2,-3'),
+      throwsA(
+        predicate(
+          (e) =>
+              e is Exception &&
+              e.toString().contains('-1') &&
+              e.toString().contains('-3'),
+        ),
+      ),
+    );
+  });
 }
