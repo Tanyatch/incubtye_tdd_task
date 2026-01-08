@@ -26,6 +26,13 @@ class StringCalculator {
       normalized = normalized.replaceAll(d, delimiters.first);
     }
     var parts = normalized.split(delimiters.first);
-    return parts.map((p) => int.parse(p)).fold(0, (a, b) => a + b);
+    var nums = parts.map((p) => int.parse(p)).toList();
+
+    var negatives = nums.where((n) => n < 0).toList();
+    if (negatives.isNotEmpty) {
+      throw Exception('negative numbers not allowed ${negatives.join(',')}');
+    }
+
+    return nums.fold(0, (a, b) => a + b);
   }
 }
