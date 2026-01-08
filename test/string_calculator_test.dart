@@ -21,16 +21,16 @@ void main() {
     expect(calculator.add('1\n2,3'), 6);
   });
   test('supports custom single-char delimiter', () {
-    var calc = StringCalculator();
-    expect(calc.add('//;\n1;2'), 3);
+    expect(calculator.add('//;\n1;2'), 3);
   });
   test('supports multi-character delimiter', () {
-    var calc = StringCalculator();
-    expect(calc.add('//[***]\n1***2***3'), 6);
+    expect(calculator.add('//[***]\n1***2***3'), 6);
   });
 
   test('supports multiple delimiters', () {
-    var calc = StringCalculator();
-    expect(calc.add('//[*][%]\n1*2%3'), 6);
+    expect(calculator.add('//[*][%]\n1*2%3'), 6);
+  });
+  test('supports multiple multi-character delimiters', () {
+    expect(calculator.add('//[***][%%]\n1***2%%3'), 6);
   });
 }
