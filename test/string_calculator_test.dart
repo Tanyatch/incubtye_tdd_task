@@ -11,4 +11,7 @@ void main() {
   test('should return the number for single input', () {
     expect(calculator.add('1'), 1);
   });
+  test('should return sum for two comma-separated numbers', () {
+    expect(calculator.add('1,4'), 5);
+  });
 }
