@@ -33,4 +33,7 @@ void main() {
   test('supports multiple multi-character delimiters', () {
     expect(calculator.add('//[***][%%]\n1***2%%3'), 6);
   });
+  test('throws exception for negative numbers', () {
+    expect(() => calculator.add('-1,2'), throwsA(isA<Exception>()));
+  });
 }
